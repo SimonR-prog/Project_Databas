@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 const CreateProjects = () => {
-  const [newProjectNumber, setNewProjectNumber] = useState();
+  const [newProjectNumber, setNewProjectNumber] = useState(100);
 
   useEffect(() => {
-    setNewProjectNumber(100)
+    setNewProjectNumber(newProjectNumber + 1)
 
   }, [])
 
