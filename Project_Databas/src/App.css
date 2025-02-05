@@ -4,31 +4,34 @@
     box-sizing: border-box;
 }
 
-:root{
+:root {
     --standard-fontfamily: "Exo 2", serif;
     --text-color: black;
-    --text-muted-color: ;
-    --text-headline-color: ;
-    --text-link-color: ;
+    --text-muted-color: #6c757d;
+    --text-headline-color: #343a40;
+    --text-link-color: #007bff;
 
-    --border-color: ;
+    --border-color: #dee2e6;
 
-    --background-color: ;
-
-    --btn-gray-background-color: ;
-    --btn-gray-border-color: ;
-    --btn-gray-text-color: ;
-    --btn-gray-background-hover-color: ;
-    --btn-gray-border-hover-color: ;
-    --btn-gray-text-hover-color: ;
-
-    --btn-yellow-background-color: ;
-    --btn-yellow-border-color: ;
-    --btn-yellow-text-color: ;
-    --btn-yellow-background-hover-color: ;
-    --btn-yellow-border-hover-color: ;
-    --btn-yellow-text-hover-color: ;
+    --background-color: #f8f9fa;
+    
+    /* Button gray colors */
+    --btn-gray-background-color: #6c757d;
+    --btn-gray-border-color: #6c757d;
+    --btn-gray-text-color: white;
+    --btn-gray-background-hover-color: #5a6268;
+    --btn-gray-border-hover-color: #5a6268;
+    --btn-gray-text-hover-color: white;
+    
+    /* Button yellow colors */
+    --btn-yellow-background-color: #ffc107;
+    --btn-yellow-border-color: #ffc107;
+    --btn-yellow-text-color: black;
+    --btn-yellow-background-hover-color: #e0a800;
+    --btn-yellow-border-hover-color: #e0a800;
+    --btn-yellow-text-hover-color: black;
 }
+
 html, body{
     margin: 0;
     color: var(--text-color);
