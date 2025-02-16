@@ -16,12 +16,9 @@ const CreateProjects = () => {
         <div className="container">
           <h1>Project {newProjectNumber} - Create new project</h1>
           <nav>
-            <Link className='btn btn-one' to={"/projects/create"}>Create Project</Link>
+            <Link className='btn btn-one' to={"/projects/create"}>+ Create Project</Link>
             <Link className='btn btn-two' to={"/projects/create"}>Show Projects</Link>
           </nav>
-
-
-
         </div>
       </section>
     
