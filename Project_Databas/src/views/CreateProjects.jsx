@@ -14,10 +14,10 @@ const CreateProjects = () => {
     <>
       <section className='section-title'>
         <div className="container">
-          <h1>Project {newProjectNumber} - Skapa nytt</h1>
+          <h1>Project {newProjectNumber} - Create new project</h1>
           <nav>
-            <Link className='btn btn-gray' to={"/projects/create"}>Gray</Link>
-            <Link className='btn btn-yellow' to={"/projects/create"}>Yellow</Link>
+            <Link className='btn btn-one' to={"/projects/create"}>Create Project</Link>
+            <Link className='btn btn-two' to={"/projects/create"}>Show Projects</Link>
           </nav>
 
 
