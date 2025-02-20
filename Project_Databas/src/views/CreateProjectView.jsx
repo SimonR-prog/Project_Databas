@@ -6,9 +6,9 @@ import Footer from './../components/Footer';
 const CreateProjectView = () => {
   return (
     <>
-    <Header />
-    <CreateProjectForm />
-    <Footer />  
+      <Header />
+      <CreateProjectForm />
+      <Footer />  
     </>
   )
 }
