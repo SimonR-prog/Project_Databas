@@ -1,7 +1,8 @@
 import './App.css'
-import { BrowserRouter, Routes, Route, NavLink} from "react-router-dom";
-import Projects from './views/projects';
-import CreateProjects from './views/CreateProjects';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CreateProjectView from './views/CreateProjectView';
+import ShowAllProjectsView from './views/ShowAllProjectsView';
+import UpdateProjectView from './views/UpdateProjectView';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -14,9 +15,10 @@ function App() {
           <Header/>
           <main>
             <Routes>
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/create" element={<CreateProjects />} />
-              <Route path="/" element={<CreateProjects />} />
+              <Route path="/" element={<CreateProjectView />} />
+              <Route path="/projects" element={<ShowAllProjectsView />} />
+              <Route path="/projects/create" element={<CreateProjectView />} />
+              <Route path="/projects/update" element={<UpdateProjectView />} />
             </Routes>
           </main>
           <Footer/>
