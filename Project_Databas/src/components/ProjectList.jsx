@@ -21,7 +21,17 @@ const ProjectList = () => {
     <>
       <section id="project-list">
         <div className="container">
-          {projects.map(project => (<ProjectListItem key={project.id} project={project} />))}
+          <h2>Projects</h2>
+          <section className='projects-header-section'>
+            <ul className='projects-header-list'>
+              <li><h3>Id</h3></li>
+              <li><h3>Customer</h3></li>
+              <li><h3>Project</h3></li>
+              <li><h3>Description</h3></li>
+            </ul>
+          </section>
+          
+          {projects.map(project => (<ProjectListItem key={project.id} project={project}/>))}
         </div>
       </section>
     </>
