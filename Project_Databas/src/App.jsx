@@ -16,9 +16,9 @@ function App() {
           <main>
             <Routes>
               <Route path="/" element={<CreateProjectView />} />
-              <Route path="/projects" element={<ShowAllProjectsView />} />
-              <Route path="/projects/create" element={<CreateProjectView />} />
-              <Route path="/projects/update" element={<UpdateProjectView />} />
+              <Route path="/Projects" element={<ShowAllProjectsView />} />
+              <Route path="/Projects/create" element={<CreateProjectView />} />
+              <Route path="/Projects/:id" element={<UpdateProjectView />} />
             </Routes>
           </main>
           <Footer/>

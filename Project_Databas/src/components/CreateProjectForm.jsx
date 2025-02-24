@@ -15,13 +15,11 @@ const CreateProjectForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
         const formData = {
             projectName: projectName,
             description: description,
             customerId: parseInt(customerId)
         }
-
         const result = await fetch('https://localhost:7141/api/Projects', {
             method: 'post',
             headers: {
@@ -29,8 +27,7 @@ const CreateProjectForm = () => {
             },
             body: JSON.stringify(formData)
         })
-        
-        console.log(result)
+        console.log(result);
     }
 
     useEffect(() => {

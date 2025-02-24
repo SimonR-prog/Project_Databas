@@ -8,7 +8,6 @@ const Header = () => {
       <nav>
         <Link className='btn btn-one' to={"/projects/create"}>+ Create a Project</Link>
         <Link className='btn btn-two' to={"/projects"}>Show All Projects</Link>
-        <Link className='btn btn-two' to={"/projects/update"}>Update a Project</Link>
       </nav>
     </header>
     </>

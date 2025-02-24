@@ -19,11 +19,11 @@
 
     --btn-color-one: #abef85;
     --btn-color-two: #F9F871;
-    --btn-color-three: #ff9257;
+    --btn-color-three: #ff4e26;
 
     --btn-color-hover-one: #5ddea2;
     --btn-color-hover-two: #d4d200;
-    --btn-color-hover-three: #cf6831;
+    --btn-color-hover-three: #ff2f00;
 }
 
 html, body{
@@ -176,7 +176,6 @@ html, body{
     color: var(--btn-color-hover-one);
     transform: scale(1.05);
 }
-
 
 .projects-list-section{
 

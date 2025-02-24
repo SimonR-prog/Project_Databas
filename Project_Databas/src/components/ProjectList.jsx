@@ -31,7 +31,7 @@ const ProjectList = () => {
             </ul>
           </section>
           
-          {projects.map(project => (<ProjectListItem key={project.id} project={project}/>))}
+          {projects.map(project => (<ProjectListItem key={project.id} project={project} />))}
         </div>
       </section>
     </>

@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const ProjectListItem = ({project}) => {
+const ProjectListItem = ({ project }) => {
   return (
     <>
       <section className="projects-list-section">
@@ -9,6 +10,10 @@ const ProjectListItem = ({project}) => {
           <li className="projects-list-item">{project.customer.customerName}</li>
           <li className="projects-list-item">{project.projectName}</li>
           <li className="projects-list-item">{project.description}</li>
+
+          <li><Link to={`/Projects/${project.id}`}><button className='btn btn-two'>Edit</button></Link></li>
+          
+          
         </ul>
       </section>
 
@@ -19,13 +24,3 @@ const ProjectListItem = ({project}) => {
 }
 
 export default ProjectListItem
-
-
-
-
-
-// <div>{project.id}</div>
-// <div>{project.ProjectName}</div>
-// <div>{project.customer.customerName}</div>
-// <div>{project.description}</div>
-
