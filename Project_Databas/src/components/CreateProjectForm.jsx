@@ -21,7 +21,7 @@ const CreateProjectForm = () => {
             customerId: parseInt(customerId)
         }
         const result = await fetch('https://localhost:7141/api/Projects', {
-            method: 'post',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json' 
             },
@@ -41,11 +41,11 @@ const CreateProjectForm = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="projectName">Project</label>
-                        <input type="text" id="projectName" value={projectName} onChange={(e) => setProjectName(e.target.value)}/>
+                        <input required type="text" id="projectName" value={projectName} onChange={(e) => setProjectName(e.target.value)}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="description">Description</label>
-                        <textarea name="description" id='description' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                        <textarea required name="description" id='description' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                     </div>
                     <div className="form-group">
                         <label htmlFor="customers">Customers</label>

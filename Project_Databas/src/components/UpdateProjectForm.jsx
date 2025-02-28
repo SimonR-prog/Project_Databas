@@ -1,22 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 //Some parts of code from chatgpt.
 
 const UpdateProjectForm = () => {
+  const [project, setProject] = useState([]);
+  const [projectName, setProjectName] = useState("");
+  const [description, setDescription] = useState("");
   //Utilize params to get the id from the url. 
+  //ParseInt the id as it may be a string when gotten from params.
   const { id } = useParams()
+  const projectId = parseInt(id, 10);
   //Bringing in navigate to be able to force the user back to the previous url of /projects. 
   const navigate = useNavigate();
 
-  const handleDelete = async () => {
-    //HandleDelete will first parseInt the id as it may be a string when gotten from params.
-    try {
-      const projectId = parseInt(id, 10);
+  //Function to get the project, which the user chose, from the url.
+  const getProject = async () => {
+    const res = await fetch(`https://localhost:7141/api/Projects/${projectId}`);
+    const data = await res.json();
+    setProject(data);
+    console.log(data);
 
+    setDescription(`${data.description}`)
+    setProjectName(`${data.projectName}`)
+  }
+  
+
+  const handleDelete = async () => {
+    try {
       //HandleDelete is async so that we can use await to send the id to the delete api.
       const res = await fetch(`https://localhost:7141/api/Projects/${projectId}`, {
-        method: 'DELETE',
+        method: 'DELETE'
       });
 
       //If the result of the fetch is 200 (ok) then the navigate will send the user back to the list of projects view, or it will log errors.
@@ -30,16 +44,49 @@ const UpdateProjectForm = () => {
       console.error("Error deleting project:", error);
     }
   };
+  
+  //Handleupdate to update the existing data. 
+  const handleUpdate = async (e) => {
+    e.preventDefault()
+      const formData = {
+        projectName: projectName,
+        description: description,
+      }
+      try {
+        const response = await fetch('https://localhost:7141/api/Projects/', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json' 
+          },
+          body: JSON.stringify(formData)
+        })
+        console.log(response)
+      } catch (error) {
+        console.error("Error updating project:", error);
+      }
+  } 
 
-  //Button with two classes. Uses a pointer function to make sure it only runs when clicked. 
+  //Use effect which will run once. 
+  useEffect(() => {
+    getProject();
+  }, [])
 
-
-  //--------Need to add a form with the current data from the project inserted already and be able to edit them. 
   return (
     <>
       <section>
         <div className="container">
-          <h3>hej</h3>
+          <h3>{projectId}</h3>
+          <form onSubmit={handleUpdate} >
+            <div className="form-group">
+              <label htmlFor='projectName'>Project</label>
+              <input required type='text' id='projectName' value={projectName} placeholder={projectName} onChange={(e) => setProjectName(e.target.value)}/>
+            </div>
+            <div className="form-group">
+              <label htmlFor='description'>Description</label>
+              <textarea required name="description" id="description" value={description} placeholder={description} onChange={(e) => setDescription(e.target.value)} ></textarea>
+            </div>
+          </form>
+          <button className='btn btn-two' type='submit' >Update Project</button>
           <button className='btn btn-three' onClick={() => handleDelete()}>Remove Project { id }</button>
         </div>
       </section>
@@ -48,3 +95,6 @@ const UpdateProjectForm = () => {
 };
 
 export default UpdateProjectForm
+
+
+//Add the rest of the project info like the company name and email. 
