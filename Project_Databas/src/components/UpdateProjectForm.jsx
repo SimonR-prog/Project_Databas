@@ -18,22 +18,19 @@ const UpdateProjectForm = () => {
   const getProject = async () => {
     const res = await fetch(`https://localhost:7141/api/Projects/${projectId}`);
     const data = await res.json();
-    setProject(data);
-    console.log(data);
+    setProject(data.content);
+    console.log(data.content);
 
-    setDescription(`${data.description}`)
-    setProjectName(`${data.projectName}`)
+    //Setting the data into relevant placeholders.
+    setDescription(`${data.content.description}`)
+    setProjectName(`${data.content.projectName}`)
   }
-  
 
   const handleDelete = async () => {
     try {
-      //HandleDelete is async so that we can use await to send the id to the delete api.
       const res = await fetch(`https://localhost:7141/api/Projects/${projectId}`, {
         method: 'DELETE'
       });
-
-      //If the result of the fetch is 200 (ok) then the navigate will send the user back to the list of projects view, or it will log errors.
       if (res.ok) {
         console.log(`Project ${projectId} deleted successfully`);
         navigate("/Projects");
@@ -66,9 +63,10 @@ const UpdateProjectForm = () => {
       }
   } 
 
-  //Use effect which will run once. 
+  //Use effect which will run once to get the current project. 
   useEffect(() => {
     getProject();
+    
   }, [])
 
   return (
@@ -87,7 +85,7 @@ const UpdateProjectForm = () => {
             </div>
           </form>
           <button className='btn btn-two' type='submit' >Update Project</button>
-          <button className='btn btn-three' onClick={() => handleDelete()}>Remove Project { id }</button>
+          <button className='btn btn-three' onClick={() => handleDelete()}>Remove Project {id}</button>
         </div>
       </section>
     </>

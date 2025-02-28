@@ -7,10 +7,10 @@ const CreateProjectForm = () => {
     const [customerId, setCustomerId] = useState("0");
 
     const getCustomers = async () => {
-        const result = await fetch('https://localhost:7141/api/Customers');
-        const data = await result.json();
+        const res = await fetch('https://localhost:7141/api/Customers');
+        const data = await res.json();
 
-        setCustomers(data);
+        setCustomers(data.content);
     }
 
     const handleSubmit = async (e) => {
@@ -45,7 +45,7 @@ const CreateProjectForm = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="description">Description</label>
-                        <textarea required name="description" id='description' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                        <textarea name="description" id='description' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                     </div>
                     <div className="form-group">
                         <label htmlFor="customers">Customers</label>

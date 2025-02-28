@@ -8,7 +8,7 @@ const ProjectList = () => {
     const result = await fetch('https://localhost:7141/api/Projects');
     const data = await result.json();
 
-    setProjects(data)
+    setProjects(data.content)
   }
 
   useEffect(() => {
