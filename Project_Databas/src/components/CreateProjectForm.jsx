@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 
 const CreateProjectForm = () => {
     const [customer, setCustomers] = useState([]);
     const [projectName, setProjectName] = useState("");
     const [description, setDescription] = useState("");
     const [customerId, setCustomerId] = useState("0");
+    const navigate = useNavigate();
 
     const getCustomers = async () => {
-        const result = await fetch('https://localhost:7141/api/Customers');
-        const data = await result.json();
+        const res = await fetch('https://localhost:7141/api/Customers');
+        const data = await res.json();
 
-        setCustomers(data);
+        setCustomers(data.content);
     }
 
     const handleSubmit = async (e) => {
@@ -20,14 +23,20 @@ const CreateProjectForm = () => {
             description: description,
             customerId: parseInt(customerId)
         }
-        const result = await fetch('https://localhost:7141/api/Projects', {
+        const res = await fetch('https://localhost:7141/api/Projects', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json' 
             },
             body: JSON.stringify(formData)
         })
-        console.log(result);
+        if (res.ok) {
+            console.log("Project added successfully");
+            console.log(res)
+            navigate("/Projects");
+          } else {
+            console.error("Failed to add project:", res.status);
+          }
     }
 
     useEffect(() => {
@@ -45,7 +54,7 @@ const CreateProjectForm = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="description">Description</label>
-                        <textarea required name="description" id='description' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                        <textarea name="description" id='description' value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                     </div>
                     <div className="form-group">
                         <label htmlFor="customers">Customers</label>
